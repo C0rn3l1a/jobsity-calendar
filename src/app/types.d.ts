@@ -13,3 +13,13 @@ export interface CalendarDay {
     next_month?: boolean;
     reminders: Reminder[];
 }
+
+export enum Palette{
+    red = 'red',
+    green = 'green',
+    blue = 'blue',
+    purple = 'purple',
+    yellow = 'yellow',
+    light_blue = 'light-blue',
+    orange = 'orange',
+}

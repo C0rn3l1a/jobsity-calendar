@@ -7,6 +7,12 @@
     width: 6rem;
     display: flex;
     padding: 0.25rem;
+
+    @each $color_name, $color in $palette {
+        &.#{$color_name}{
+            background: $color;
+        }
+    }
 }
 
 .reminder__text{

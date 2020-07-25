@@ -31,21 +31,24 @@ export class CalendarComponent implements OnInit {
     constructor(private _reminders_service: RemindersService) { }
 
     ngOnInit(): void {
-        this.calendar_days = this.get_calendar_days(this.current_month, this.current_year)
-        this._reminders_service.get_reminders(this.current_month, this.current_year).subscribe(reminders => {
+        this._reminders_service.reminder_list.subscribe(reminders => {
+            this.calendar_days.map(day => day.reminders = [])
             for(let reminder of reminders){
                 this.reminder_map.set(reminder.id, reminder)
                 let index = this.calendar_days.findIndex(day => {
                     return day.moment.date() === reminder.date.date() && day.moment.month() === reminder.date.month()
                 })
                 if(index > 0){
-                    !this.calendar_days[index].reminders && ( this.calendar_days[index].reminders = [] )
                     this.calendar_days[index].reminders.push(reminder)
                 }
                 // TODO: order remindes by time
             }
         })
+        this.calendar_days = this.get_calendar_days(this.current_month, this.current_year)
+        this._reminders_service.get_reminders(this.current_month, this.current_year)   
     }
+    
+    // Core Functionality
 
     get_fill_start(month, year){
         let fill_start = []
@@ -77,7 +80,7 @@ export class CalendarComponent implements OnInit {
         let month_days_amount = moment().year(month).month(year).daysInMonth();
         let calendar_days = []
         for(let i = 1; i <= month_days_amount; i++){
-            calendar_days.push({date: i, code: moment().date(i).format('MM-DD-YYYY'), moment: moment().year(month).month(month).date(i)})
+            calendar_days.push({date: i, code: moment().date(i).format('MM-DD-YYYY'), moment: moment().year(year).month(month).date(i)})
         }
 
         let fill_start = this.get_fill_start(month, year)
@@ -90,12 +93,29 @@ export class CalendarComponent implements OnInit {
         ]
     }
 
+    // User Interactions
     open_add_reminder(day: CalendarDay, $event: MouseEvent){
         this._toggle_overlay = true
         this._reminder_edition = true
         this.chosen_day = day
         this.chosen_reminder = null
         this.generate_overlay_anchor($event.screenX, $event.screenY)
+    }
+    
+    open_reminder(day: CalendarDay, reminder: Reminder, $event: MouseEvent){
+        this._toggle_overlay = true
+        this._reminder_edition = false
+        this.chosen_day = day
+        this.chosen_reminder = reminder
+        this.generate_overlay_anchor($event.screenX, $event.screenY)
+    }
+
+    close_reminder(){
+        this._toggle_overlay = false
+        this._reminder_edition = false
+        this.chosen_day = null
+        this.chosen_reminder = null
+        this._overlay_anchor = null
     }
 
     generate_overlay_anchor(x,y){

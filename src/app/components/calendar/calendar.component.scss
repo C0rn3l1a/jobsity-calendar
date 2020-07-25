@@ -12,7 +12,9 @@
     display: grid;
     grid-template-columns: repeat(7,8rem);
     background: $main_blue;
-    color: $white;
+    .day-name{
+        color: $white;
+    }
 }
 
 .calendar__head-cell{
@@ -80,6 +82,7 @@
 
 // CALENDAR OVERLAY CLASSES
 .calendar__reminder-overlay{
+    overflow: hidden;
     position: fixed;
     width: 350px;
     height: 400px;

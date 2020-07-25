@@ -1,18 +1,44 @@
-<div class="reminder-detail__container">
-    <div class="reminder-detail__actions">
-        <span class="reminder-detail__action material-icons">edit</span>
-        <span class="reminder-detail__action material-icons">delete</span>
-        <span class="reminder-detail__action material-icons">clear</span>
+<form [formGroup]="reminder_form">
+    <div class="reminder-detail__container">
+        <div class="reminder-detail__actions" [ngClass]="reminder_form.value.color">
+            <div class="reminder-detail__color-selector" *ngIf="edition">
+                <span class="reminder-detail__color-selector-label material-icons">palette</span>
+                <color-selector formControlName="color"></color-selector>
+            </div>
+            <span class="reminder-detail__action material-icons" (click)="action_climate()">cloud</span>
+            <span class="reminder-detail__action material-icons" *ngIf="!edition" (click)="action_edit()">edit</span>
+            <span class="reminder-detail__action material-icons" *ngIf="edition" (click)="action_save()">save</span>
+            <span class="reminder-detail__action material-icons" *ngIf="reminder" (click)="action_delete()">delete</span>
+            <span class="reminder-detail__action material-icons" (click)="action_close()">clear</span>
+        </div>
+        <div class="reminder-detail__content">
+            <div class="reminder-detail__property">
+                <span class="reminder-detail__property-label"><span class="material-icons">comment</span></span>
+                <ng-container *ngIf="!edition">
+                    <span>{{reminder_form.value.text}}</span>
+                </ng-container>
+                <ng-container *ngIf="edition">
+                    <input type="text" formControlName="text">
+                </ng-container>
+            </div>
+            <div class="reminder-detail__property">
+                <span class="reminder-detail__property-label"><span class="material-icons">schedule</span></span>
+                <ng-container *ngIf="!edition">
+                    <span>{{reminder_form.value.date | date}}</span>
+                </ng-container>
+                <ng-container *ngIf="edition">
+                    <input type="text" formControlName="date">
+                </ng-container>
+            </div>
+            <div class="reminder-detail__property">
+                <span class="reminder-detail__property-label"><span class="material-icons">place</span></span>
+                <ng-container *ngIf="!edition">
+                    <span>{{reminder_form.value.city}}</span>
+                </ng-container>
+                <ng-container *ngIf="edition">
+                    <input type="text" formControlName="city">
+                </ng-container>
+            </div>
+        </div>
     </div>
-    <div class="reminder-detail__content">
-        <div class="reminder-detail__property">
-            <span>Texto</span>
-        </div>
-        <div class="reminder-detail__property">
-            <span>color</span>
-        </div>
-        <div class="reminder-detail__property">
-            <span>ciudad</span>
-        </div>
-    </div>
-</div>
+</form>

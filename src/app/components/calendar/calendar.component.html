@@ -15,7 +15,7 @@
                 </div>
                 <ng-container *ngIf="day.reminders">
                     <ng-container *ngFor="let reminder of day.reminders">
-                        <reminder [reminder]="reminder"></reminder>
+                        <reminder [reminder]="reminder" (click)="open_reminder(day, reminder, $event)"></reminder>
                     </ng-container>
                 </ng-container>
             </div>
@@ -24,5 +24,5 @@
 </div>
 
 <div class="calendar__reminder-overlay" *ngIf="_toggle_overlay" [ngStyle]="{top: _overlay_anchor.y, left: _overlay_anchor.x}">
-    <reminder-detail [day]="chosen_day" [reminder]="chosen_reminder" [edition]="_reminder_edition"></reminder-detail>
+    <reminder-detail [day]="chosen_day" [reminder]="chosen_reminder" [edition]="_reminder_edition" (close)="close_reminder()"></reminder-detail>
 </div>
