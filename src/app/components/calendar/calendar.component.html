@@ -1,0 +1,28 @@
+<div class="calendar__container">
+    <div class="calendar__head">
+        <div *ngFor="let day of days" class="calendar__head-cell">
+            <span class="day-name">{{day}}</span>
+        </div>
+    </div>
+    <div class="calendar__body">
+        <div *ngFor="let day of calendar_days" class="calendar__body-cell" (mouseover)="hovered_day = day.code" (mouseleave)="hovered_day = null">
+            <div class="calendar__cell-day" [class.disabled]="day.last_month || day.next_month">
+                {{day.date}}
+            </div>
+            <div class="calendar__cell-events">
+                <div class="calendar__add-reminder">
+                    <span class="material-icons" *ngIf="hovered_day === day.code" (click)="open_add_reminder(day, $event)">add</span>
+                </div>
+                <ng-container *ngIf="day.reminders">
+                    <ng-container *ngFor="let reminder of day.reminders">
+                        <reminder [reminder]="reminder"></reminder>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="calendar__reminder-overlay" *ngIf="_toggle_overlay" [ngStyle]="{top: _overlay_anchor.y, left: _overlay_anchor.x}">
+    <reminder-detail [day]="chosen_day" [reminder]="chosen_reminder" [edition]="_reminder_edition"></reminder-detail>
+</div>
