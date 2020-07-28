@@ -82,7 +82,7 @@ export class reminderDetailComponent implements OnInit {
      */
     action_delete(){
         this.reminder = this.reminder_form.value
-        this._reminders_service.delete_reminder(this.reminder, this.day.moment.month(), this.day.moment.year())
+        this._reminders_service.delete_reminder(this.reminder)
         this.edition = false
         this.close_output.emit()
     }
@@ -104,7 +104,7 @@ export class reminderDetailComponent implements OnInit {
     action_save(){
         if(this.reminder_form.valid){
             this.reminder = this.reminder_form.value
-            this._reminders_service.set_reminder(this.reminder, this.day.moment.month(), this.day.moment.year())
+            this._reminders_service.set_reminder(this.reminder)
             this.edition = false
             if(this.reminder_form.value.city){
                 this._weather_service.get_weather(this.reminder_form.value.city.id, this.reminder_form.value.date).subscribe(forecast => {

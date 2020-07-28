@@ -40,7 +40,9 @@ export class RemindersService {
      * @param {number} year
      * @memberof RemindersService
      */
-    set_reminder(reminder: Reminder, month: number, year: number) {
+    set_reminder(reminder: Reminder) {
+        let month = reminder.date.month()
+        let year = reminder.date.year()
         let reminder_list: any[] = JSON.parse(localStorage.getItem(`${month}-${year}_reminders`) || '[]')
         reminder_list = reminder_list.map(r => { r.date = moment(r.date); return r })
         let existing_reminder_index = reminder_list.findIndex(r => r.id === reminder.id)
@@ -64,7 +66,9 @@ export class RemindersService {
      * @param {number} year
      * @memberof RemindersService
      */
-    delete_reminder(reminder: Reminder, month: number, year: number) {
+    delete_reminder(reminder: Reminder) {
+        let month = reminder.date.month()
+        let year = reminder.date.year()
         let reminder_list: any[] = JSON.parse(localStorage.getItem(`${month}-${year}_reminders`) || '[]')
         reminder_list = reminder_list.map(r => { r.date = moment(r.date); return r })
         let existing_reminder_index = reminder_list.findIndex(r => r.id === reminder.id)

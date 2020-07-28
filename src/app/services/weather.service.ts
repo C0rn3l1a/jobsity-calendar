@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-// import cities from 'src/assets/city.list.json';
-import DataFrame from "dataframe-js";
 import { map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Country } from '../types';
