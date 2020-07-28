@@ -1,7 +1,7 @@
 export interface Reminder {
     id: string;
     date: moment.Moment;
-    city: string;
+    city: Country;
     text: string;
     color: string
 }
@@ -12,6 +12,14 @@ export interface CalendarDay {
     last_month?: boolean;
     next_month?: boolean;
     reminders: Reminder[];
+}
+
+export interface Country{
+    id: number
+    name: string
+    state: string
+    country: string
+    coord: {lon: number, lat:number}
 }
 
 export enum Palette{

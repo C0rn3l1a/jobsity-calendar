@@ -29,6 +29,10 @@
     &:last-child{
         margin-left: 1rem;
     }
+    &.disabled{
+        cursor: not-allowed;
+        color: $gray_3;
+    }
 }
 
 .reminder-detail__color-selector{
@@ -56,4 +60,64 @@
     display: flex;
     align-items: start;
     justify-content: space-between;
+    &.error{
+        span{
+            color: $error;
+        }
+    }
+}
+
+.reminder-detail__property-input{
+    
+    &.error{
+        border: solid 1px $error;
+        outline: solid 1px $error;
+    }
+}
+
+// Reminder weather
+.reminder-detail__weather{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    padding: 1rem;
+    &.no_forecast{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+    }
+}
+
+.reminder-detail__weather-conditions{
+    display: flex;
+    width: 100%;
+    .image{
+        margin-right: 0.5rem;
+        border-radius: 1rem;
+        background: $weather_background;
+        height: 6rem;
+        width: auto;
+    }
+    .condition{
+        margin-top: 1rem;
+        margin-bottom: auto;
+        font-size: 1.5rem;
+    }
+
+}
+.reminder-detail__weather-temperature{
+    display: flex;
+    width: 100%;
+    .unit{
+        margin-top: 1rem;
+        margin-bottom: auto;
+        font-size: 1.5rem;
+    }
+    .temperature{
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        font-size: 3rem;
+    }
 }

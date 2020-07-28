@@ -52,7 +52,7 @@ export class ColorSelectorComponent implements OnInit {
     }
 
     /**
-     * @description Este metodo guarda el callback asignado en el view para, lo gaurdamos en onChange para poder llamarlo internamente
+     * @description This method stores the callback so we can call it when necessary
      * @param fn 
      */
     registerOnChange(fn: any) {
@@ -61,7 +61,7 @@ export class ColorSelectorComponent implements OnInit {
     onChange: any = () => { }
 
     /**
-     * @description Este metodo guarda el callback asignado en el view para, lo gaurdamos en onTouch para poder llamarlo internamente
+     * @description This method stores the callback so we can call it when necessary
      * @param fn 
      */
     registerOnTouched(fn: any) {
@@ -70,7 +70,7 @@ export class ColorSelectorComponent implements OnInit {
     onTouch: any = () => { }
 
     /**
-     * @description Este metodo se llama automaticamente cuando el estado cambia en el ngcontrol
+     * @description This method is called automatically by ngControl
      * @param {boolean} isDisabled
      */
     setDisabledState(isDisabled: boolean): void {

@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ReminderComponent implements OnInit {
 
     @Input('reminder') reminder
+    @Input('long') long = false
 
     constructor() {}
 

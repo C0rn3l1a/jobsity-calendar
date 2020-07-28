@@ -21,6 +21,8 @@
 }
 
 .color-selector__options{
+    z-index: 100;
+    background: $white;
     position: absolute;
     width: 100%;
     top: 1.6rem;
