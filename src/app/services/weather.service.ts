@@ -33,10 +33,10 @@ export class WeatherService {
                 if(forecast){
                     return forecast
                 } else {
-                    return {message: "No Forecast Avaiable"}
+                    return {message: "No Forecast Available"}
                 }
             } else {
-                return {message: "No Forecast Avaiable"}
+                return {message: "No Forecast Available"}
             }
         }))
     }

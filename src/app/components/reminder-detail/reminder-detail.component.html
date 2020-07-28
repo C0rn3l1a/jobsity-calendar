@@ -41,8 +41,8 @@
             </div>
         </div>
 
-        <div class="reminder-detail__weather" [class.no_forecast]="!forecast_avaiable">
-            <ng-container *ngIf="forecast_avaiable && forecast">
+        <div class="reminder-detail__weather" [class.no_forecast]="!forecast_available">
+            <ng-container *ngIf="forecast_available && forecast">
                 <div class="reminder-detail__weather-conditions">
                     <img class="image" [src]="'http://openweathermap.org/img/wn/'+forecast?.weather[0]?.icon+'@2x.png'" alt="">
                     <span class="condition">{{forecast.weather[0].main}}</span>
@@ -52,7 +52,7 @@
                     <span class="unit">&#176;F</span>
                 </div>
             </ng-container>
-            <ng-container *ngIf="!forecast_avaiable && forecast">
+            <ng-container *ngIf="!forecast_available && forecast">
                 {{forecast.message}}
             </ng-container>
         </div>

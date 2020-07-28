@@ -19,7 +19,6 @@
     "@angular/platform-browser": "~9.1.0",
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
-    "dataframe-js": "^1.4.3",
     "moment": "^2.27.0",
     "rxjs": "^6.5.5",
     "tslib": "^1.10.0",

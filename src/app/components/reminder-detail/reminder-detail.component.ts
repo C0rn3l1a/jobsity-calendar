@@ -31,7 +31,7 @@ export class reminderDetailComponent implements OnInit {
     })
 
     weather: any
-    forecast_avaiable = false
+    forecast_available = false
     forecast
 
     constructor(private _form_builder: FormBuilder, private _reminders_service: RemindersService, private _weather_service: WeatherService) {}
@@ -57,9 +57,9 @@ export class reminderDetailComponent implements OnInit {
         if(this.reminder_form.value.city){
             this._weather_service.get_weather(this.reminder_form.value.city.id, this.reminder_form.value.date).subscribe(forecast => {
                 if(forecast.message){
-                    this.forecast_avaiable = false
+                    this.forecast_available = false
                 } else {
-                    this.forecast_avaiable = true
+                    this.forecast_available = true
                 }
                 this.forecast = forecast
             })
@@ -109,9 +109,9 @@ export class reminderDetailComponent implements OnInit {
             if(this.reminder_form.value.city){
                 this._weather_service.get_weather(this.reminder_form.value.city.id, this.reminder_form.value.date).subscribe(forecast => {
                     if(forecast.message){
-                        this.forecast_avaiable = false
+                        this.forecast_available = false
                     } else {
-                        this.forecast_avaiable = true
+                        this.forecast_available = true
                     }
                     this.forecast = forecast
                 })
